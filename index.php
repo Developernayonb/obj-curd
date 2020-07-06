@@ -10,6 +10,40 @@
 </head>
 <body>
 	
+ <?php 
+
+ /**
+  * Student form data management
+  */
+
+if ( isset($_POST['submit']) ) {
+	//Value get
+
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$cell = $_POST['cell'];
+
+	// File Management
+
+	$img = $_FILES['photo'];
+
+    if ( empty($name) || empty($email) || empty($cell) ) {
+    	$mess = "<p class=\" alert alert-danger \"> All fields are required ! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
+    }elseif ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+    	$mess = "<p class=\" alert alert-danger \"> Invalid Email address ! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
+    }
+
+
+
+}
+
+
+
+
+
+
+
+  ?>
 	
 
 	<div class="wrap">
@@ -17,6 +51,13 @@
 		<div class="card shadow">
 			<div class="card-body">
 				<h2>Sign Up</h2>
+				<?php 
+                
+                if ( isset($mess)) {
+                	echo $mess;
+                }
+  
+				 ?>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Name</label>
