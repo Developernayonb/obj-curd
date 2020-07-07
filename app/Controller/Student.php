@@ -12,11 +12,15 @@ class Student extends Database
 
    public function addNewStudent($name, $email, $cell, $img)
    {
+   
+
+   	// Data send
    	$data = $this ->insert('students', [
     
     'name'    => $name,
     'email'    => $email,
     'cell'    => $cell,
+    'photo'    => $this -> fileUpload($img, 'media/img/students/'),
 
    	]);
 

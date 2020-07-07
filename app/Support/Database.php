@@ -28,6 +28,36 @@ abstract class Database
   {
   	return $this -> connection = new mysqli($this -> host, $this -> user, $this -> pass, $this -> db);
   }
+  /**
+   * File upload managements
+   */
+    public function fileUpload($file, $location = '', array $file_style = ['jpg','png','jpeg','gif'])
+    {
+    	// File info
+
+    	$file_name = $file['name'];
+    	$file_tmp = $file['tmp_name'];
+    	$file_size = $file['size'];
+
+    	//File extension
+
+    	$file_array = explode(',', $file_name);
+    	$file_extension = strtolower(end($file_array ));
+
+    	// unique name
+
+    	$unique_file_name = md5(time().rand()) .'.'.$file_extension;
+
+    	//file upload
+    	move_uploaded_file($file_tmp, $location . $unique_file_name );
+
+    	return $unique_file_name;
+    }
+
+   
+   /**
+    * Data insert table
+    */
 
   protected function insert($table, array $data)
   {
