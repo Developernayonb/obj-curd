@@ -1,3 +1,16 @@
+<?php require_once "vendor/autoload.php"; ?>
+<?php 
+
+// Class use
+use App\Controller\Student;
+
+//class instance
+
+$student = new Student;
+
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +42,10 @@ if ( isset($_POST['submit']) ) {
 
     if ( empty($name) || empty($email) || empty($cell) ) {
     	$mess = "<p class=\" alert alert-danger \"> All fields are required ! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
-    }elseif ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+    }elseif( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
     	$mess = "<p class=\" alert alert-danger \"> Invalid Email address ! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
+    }else {
+    	$mess = $student -> addNewStudent($name, $email, $cell, $img);
     }
 
 
