@@ -31,7 +31,7 @@ abstract class Database
   /**
    * File upload managements
    */
-    public function fileUpload($file, $location = '', array $file_style = ['jpg','png','jpeg','gif'])
+    protected function fileUpload($file, $location = '', array $file_style = ['jpg','png','jpeg','gif'])
     {
     	// File info
 
@@ -89,7 +89,22 @@ abstract class Database
     }
 
   }
+  /**
+   * Get all data
+   */
+
+  protected function all($table, $order_by)
+  {
+  	// Data get
+    $sql = "SELECT * FROM $table ORDER BY id $order_by";
+    $data = $this -> connection() -> query($sql);
   
+    if ($data) {
+    	return $data;
+    }
+  }
+
+
 
 }
 

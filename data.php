@@ -1,3 +1,17 @@
+<?php require_once "vendor/autoload.php"; ?>
+<?php 
+
+// Class use
+use App\Controller\Student;
+
+//class instance
+
+$student = new Student;
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,68 +43,32 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						
+                         
+                         <?php 
+                          
+                          $data = $student -> allStudents();
+                           $i = 1;
+                          while ($student = $data -> fetch_assoc()) :
 
+                        
+
+                      ?>
+
+						<tr>
+							<td><?php echo  $i; $i++; ?></td>
+							<td><?php echo $student['name']; ?></td>
+							<td><?php echo $student['email']; ?></td>
+							<td><?php echo $student['cell']; ?></td>
+							<td><img src="media/img/students/<?php echo $student['photo']; ?>"></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+					<?php endwhile; ?>
+
+						
 					</tbody>
 				</table>
 			</div>

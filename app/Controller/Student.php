@@ -31,5 +31,18 @@ class Student extends Database
 
    }
 
+   /**
+    * Get all value
+    */
+
+   public function allStudents()
+   {
+   	 $data = $this -> all('students', 'DESC');
+
+    if ($data) {
+    	return $data;
+    }
+   }
+
 
 }
