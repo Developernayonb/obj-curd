@@ -104,6 +104,21 @@ abstract class Database
     }
   }
 
+  /**
+   * Delete data
+   */
+
+  public function delete($table, $id)
+  {
+  	 // Data Delete
+    $sql = "DELETE FROM $table WHERE id='$id'";
+    $data = $this -> connection() -> query($sql);
+  
+    if ($data) {
+    	return true;
+    }
+  }
+
 
 
 }

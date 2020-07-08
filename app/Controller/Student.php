@@ -25,7 +25,7 @@ class Student extends Database
    	]);
 
     if ($data) {
-    	return $mess = "<p class=\" alert alert-success \"> Student added successfully! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
+    	return "<p class=\" alert alert-success \"> Student added successfully! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
     }
 
 
@@ -44,5 +44,16 @@ class Student extends Database
     }
    }
 
+   /**
+    * Delete single students
+    */
 
+   public function deleteStudent($id)
+   {
+   	$data = $this -> delete('students', $id);
+
+   	if ($data) {
+   		return "<p class=\" alert alert-success \"> Student Deleted successfully! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
+   	}
+   }
 }
