@@ -108,7 +108,7 @@ abstract class Database
    * Delete data
    */
 
-  public function delete($table, $id)
+  protected function delete($table, $id)
   {
   	 // Data Delete
     $sql = "DELETE FROM $table WHERE id='$id'";
@@ -118,6 +118,24 @@ abstract class Database
     	return true;
     }
   }
+ /**
+  * Show single data
+  */
+ 
+
+  protected function find( $table, $id )
+
+  {
+    // Data Show
+    $sql = "SELECT * FROM $table WHERE id='$id'";
+    $data = $this -> connection() -> query($sql);
+  
+    if ($data) {
+    	return $data;
+    }
+  }
+
+
 
 
 

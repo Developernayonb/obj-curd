@@ -56,4 +56,15 @@ class Student extends Database
    		return "<p class=\" alert alert-success \"> Student Deleted successfully! <button class=\" close \" data-dismiss=\"alert\">&times;</button></p>";
    	}
    }
+
+   /**
+    * Single Student data
+    */
+
+   public function singleStudent($id)
+   {
+   	 $data = $this -> find('students', $id );
+
+   	 return $data -> fetch_assoc();
+   }
 }
